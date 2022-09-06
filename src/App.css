@@ -39,7 +39,6 @@ td {
     border-bottom: 1px solid #eee;
     position: relative;
     padding-left: 50%;
-    width: 100%;
   }
 
   td:before {
