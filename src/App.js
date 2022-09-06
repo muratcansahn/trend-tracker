@@ -44,49 +44,52 @@ function App() {
   console.log(coins);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Price</th>
+    <>
+      <select
+        defaultValue="24h"
+        onChange={(e) => setTimePeriod(e.target.value)}
+      >
+        {TimePeriods.map((timePeriod) => (
+          <option key={timePeriod} value={timePeriod}>
+            {timePeriod}
+          </option>
+        ))}
+      </select>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {coins.map((coin) => {
+            // {
+            //   coin.change > 0
+            //     ? () => {
+            //         setIsAscending(true);
+            //       }
+            //     : "";
+            // }
+            return (
+              <tr key={coin.uuid}>
+                <td>{coin.rank}</td>
+                <td>{coin.name}</td>
 
-          <select
-            defaultValue="24h"
-            onChange={(e) => setTimePeriod(e.target.value)}
-          >
-            {TimePeriods.map((timePeriod) => (
-              <option key={timePeriod} value={timePeriod}>
-                {timePeriod}
-              </option>
-            ))}
-          </select>
-        </tr>
-      </thead>
-      <tbody>
-        {coins.map((coin) => {
-          // {
-          //   coin.change > 0
-          //     ? () => {
-          //         setIsAscending(true);
-          //       }
-          //     : "";
-          // }
-          return (
-            <tr key={coin.uuid}>
-              <td>{coin.rank}</td>
-              <td>{coin.name}</td>
-
-              {coin.sparkline.slice(0, 10).map((sparkline, i) => {
-                return (
-                  <td className={`sparkline`}>{sparkline.substring(0, 7)}</td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+                {coin.sparkline.slice(0, 10).map((sparkline, i) => {
+                  return (
+                    <td className={`sparkline`} key={i}>
+                      {sparkline.substring(0, 7)}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 }
 export default App;
