@@ -66,7 +66,7 @@ function App() {
                 <td>{coin.rank}</td>
                 <td>{coin.name}</td>
 
-                {coin.sparkline.slice(0, 10).map((sparkline, i) => {
+                {coin.sparkline.slice(14).map((sparkline, i) => {
                   return (
                     <td className={`sparkline`} key={i}>
                       {sparkline.substring(0, 7)}
