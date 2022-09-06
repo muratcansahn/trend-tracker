@@ -26,18 +26,7 @@ function App() {
   }, [timePeriod]);
 
   console.log(timePeriod);
-  const TimePeriods = [
-    "1h",
-    "3h",
-    "12h",
-    "24h",
-    "7d",
-    "30d",
-    "3m",
-    "1y",
-    "3y",
-    "5y",
-  ];
+  const TimePeriods = ["1h", "3h", "12h", "24h", "7d", "30d", "3m", "1y"];
 
   ////we can do it with price change !!!!!!
 
