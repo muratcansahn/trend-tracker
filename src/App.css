@@ -4,3 +4,9 @@ td {
   font-size: 16px;
   border: 1px solid black;
 }
+.red {
+  background-color: #fa9494;
+}
+.green {
+  background-color: #90b77d;
+}

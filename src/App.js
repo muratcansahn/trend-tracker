@@ -1,12 +1,10 @@
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { fetchFromAPI } from "../src/fetchFromAPI";
 
 function App() {
   const [coins, setCoins] = useState([]);
   const [timePeriod, setTimePeriod] = useState("24h");
-  const [isAscending, setIsAscending] = useState(false);
 
   const options = {
     method: "GET",
@@ -25,12 +23,7 @@ function App() {
       .catch((err) => console.error(err));
   }, [timePeriod]);
 
-  console.log(timePeriod);
   const TimePeriods = ["1h", "3h", "12h", "24h", "7d", "30d", "3m", "1y"];
-
-  ////we can do it with price change !!!!!!
-
-  console.log(coins);
 
   return (
     <>
@@ -49,18 +42,10 @@ function App() {
           <tr>
             <th>Rank</th>
             <th>Name</th>
-            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           {coins.map((coin) => {
-            // {
-            //   coin.change > 0
-            //     ? () => {
-            //         setIsAscending(true);
-            //       }
-            //     : "";
-            // }
             return (
               <tr key={coin.uuid}>
                 <td>{coin.rank}</td>
@@ -68,8 +53,15 @@ function App() {
 
                 {coin.sparkline.slice(14).map((sparkline, i) => {
                   return (
-                    <td className={`sparkline`} key={i}>
-                      {sparkline.substring(0, 7)}
+                    <td
+                      className={`${
+                        coin.sparkline[i + 13] < coin.sparkline[i + 14]
+                          ? "green"
+                          : "red"
+                      }`}
+                      key={i}
+                    >
+                      {sparkline.substring(0, 7)}{" "}
                     </td>
                   );
                 })}
