@@ -17,7 +17,7 @@ function App() {
   };
   useEffect(() => {
     fetch(
-      `https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${timePeriod}&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0`,
+      `https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${timePeriod}&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=100&offset=0`,
       options
     )
       .then((response) => response.json())
